@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webpage-deployment
+spec:
+  replicas: 10
+  selector:
+    matchLabels:
+      component: webpage
+  template:
+    metadata:
+      labels:
+        component: webpage
+    spec:
+      containers:
+      - name: jendarey-devops-webpage
+        image: jendaredocker/jendarey_devops_webpage:v1
+        ports:
+        - containerPort: 80
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: webpage-lb-service
+spec:
+  type: LoadBalancer
+  selector:
+    component: webpage
+  ports:
+    - port: 80
+      targetPort: 80
