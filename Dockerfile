@@ -22,3 +22,7 @@ EXPOSE 80
 
 # The default command for the Nginx container starts the Nginx server automatically
 CMD ["nginx", "-g", "daemon off;"]
+
+
+#docker build -t jendaredocker/jendarey_devops_webpage:v1 .
+#docker run -d -p 10000:80 jendaredocker/jendarey_devops_webpage:v1
